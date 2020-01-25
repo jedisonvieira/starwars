@@ -1,0 +1,110 @@
+<div class="mat-elevation-z1">
+  <table
+    mat-table
+    class="table-responsive table-margin-top-14"
+    matSort
+    aria-label="Elements"
+  >
+    <ng-container matColumnDef="name">
+      <th
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef
+        class="table-header name-column"
+      >
+        Name
+      </th>
+      <td mat-cell class="name-column" *matCellDef="let row">
+        {{ row.name }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="height">
+      <th
+        class="regular-column no-wrap"
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="table-header"
+      >
+        Height
+      </th>
+      <td mat-cell class="regular-column" *matCellDef="let row">
+        {{ row.height }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mass">
+      <th
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef
+        class="table-header regular-column"
+      >
+        Mass
+      </th>
+      <td mat-cell class="regular-column" *matCellDef="let row">
+        {{ row.mass }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="hair_color">
+      <th
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef
+        class="table-header regular-column"
+      >
+        Hair color
+      </th>
+      <td mat-cell class="regular-column" *matCellDef="let row">
+        {{ row.hair_color }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="skin_color">
+      <th
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef
+        class="table-header regular-column"
+      >
+        Skin color
+      </th>
+      <td mat-cell class="regular-column" *matCellDef="let row">
+        {{ row.skin_color }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="homeworld">
+      <th
+        mat-header-cell
+        mat-sort-header
+        *matHeaderCellDef
+        class="table-header homeworld-column"
+      >
+        Homeworld
+      </th>
+      <td mat-cell class="homeworld-column" *matCellDef="let row">
+        {{ row.homeworld }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="selected(row)"
+    ></tr>
+  </table>
+
+  <mat-paginator
+    #paginator
+    class="paginator"
+    [length]="dataSource?.data.length"
+    [pageIndex]="0"
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 25, 50, 100]"
+  >
+  </mat-paginator>
+</div>

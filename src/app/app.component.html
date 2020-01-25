@@ -33,7 +33,7 @@
       ></app-char-table>
     </div>
 
-    <div class="row margin-top-24">
+    <div class="row margin-top-24" *ngIf="char.films">
       <mat-form-field class="col-md-3">
         <mat-label> name </mat-label>
         <input matInput name="name" [(ngModel)]="char.name" />
@@ -54,7 +54,7 @@
         <input matInput name="eye_color" [(ngModel)]="char.eye_color" />
       </mat-form-field>
 
-      <mat-list class="col-md-12" role="list" *ngIf="char.films">
+      <mat-list class="col-md-12" role="list">
         <h6 style="color: indigo;">{{ char.name }} Films</h6>
         <mat-list-item *ngFor="let film of char.films">
           {{ film }}

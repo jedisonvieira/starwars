@@ -57,7 +57,6 @@ export class AppComponent implements OnInit {
   }
 
   public charSelected(char: People): void {
-    // Fiz desta forma para utlizar apenas methods de search da lib.
     this.char.films = [];
     this.char.name = char.name;
     this.char.gender = char.gender;
@@ -65,12 +64,17 @@ export class AppComponent implements OnInit {
     this.char.birth_year = char.birth_year;
 
     char.films.forEach(film => {
-      //Retira todas as letras da string
-      let filmId = film.replace(/^\D+/g, "").replace("/", "");
+      // Fiz desta forma para utlizar apenas methods de search da lib.
+      //Deixar apenas o codigo do filme para utilizar o method de getFilm(id)
+      let filmId = this.replaceUrlChars(film);
 
       this.swapiService.getFilm(Number(filmId)).subscribe((film: Film) => {
-        this.char.films.push(film.title);
+        this.char.films.push(`${film.title} | Date ${film.release_date}`);
       });
     });
+  }
+
+  public replaceUrlChars(url: string): string {
+    return url.replace(/^\D+/g, "").replace("/", "");
   }
 }

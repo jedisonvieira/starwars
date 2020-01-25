@@ -27,8 +27,7 @@ export class CharTableComponent {
     "height",
     "mass",
     "hair_color",
-    "skin_color",
-    "homeworld"
+    "skin_color"
   ];
 
   public setDataSource(people: People[]): void {

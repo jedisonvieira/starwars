@@ -1,63 +1,66 @@
 <div class="container">
-  <div class="row">
-    <mat-form-field class="col-md-9">
-      <mat-label> Search by name </mat-label>
-      <input
-        matInput
-        name="search"
-        [(ngModel)]="search"
-        (keyup.enter)="searchByName(search)"
-      />
-      <mat-icon [inline]="true" matSuffix>
-        <i class="fas fa-search" (click)="searchByName(search)"></i>
-      </mat-icon>
-    </mat-form-field>
+  <div class="container-fluid">
+    <div class="row">
+      <mat-form-field class="col-md-9">
+        <mat-label> Search by name </mat-label>
+        <input
+          matInput
+          name="search"
+          [(ngModel)]="search"
+          (keyup.enter)="searchByName(search)"
+        />
+        <mat-icon [inline]="true" matSuffix>
+          <i class="fas fa-search" (click)="searchByName(search)"></i>
+        </mat-icon>
+      </mat-form-field>
 
-    <mat-form-field class="col-md-3">
-      <mat-label> Gender </mat-label>
-      <mat-select
-        (selectionChange)="selectGender($event.value)"
-        [(value)]="selectedGender"
-      >
-        <mat-option value="none"> None </mat-option>
-        <mat-option value="n/a"> N/A </mat-option>
-        <mat-option value="male"> Male </mat-option>
-        <mat-option value="female"> Female </mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field class="col-md-3">
+        <mat-label> Gender </mat-label>
+        <mat-select
+          (selectionChange)="selectGender($event.value)"
+          [(value)]="selectedGender"
+        >
+          <mat-option value="none"> None </mat-option>
+          <mat-option value="n/a"> N/A </mat-option>
+          <mat-option value="male"> Male </mat-option>
+          <mat-option value="female"> Female </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <app-char-table
-      (charSelected)="charSelected($event)"
-      class="col-md-12"
-    ></app-char-table>
-  </div>
+      <app-char-table
+        (charSelected)="charSelected($event)"
+        class="col-md-12"
+      ></app-char-table>
+    </div>
 
-  <div class="row margin-top-14">
-    <mat-form-field class="col-md-3">
-      <mat-label> name </mat-label>
-      <input matInput name="name" [(ngModel)]="char.name" />
-    </mat-form-field>
+    <div class="row margin-top-24">
+      <mat-form-field class="col-md-3">
+        <mat-label> name </mat-label>
+        <input matInput name="name" [(ngModel)]="char.name" />
+      </mat-form-field>
 
-    <mat-form-field class="col-md-3">
-      <mat-label> Birth year </mat-label>
-      <input matInput name="birth_year" [(ngModel)]="char.birth_year" />
-    </mat-form-field>
+      <mat-form-field class="col-md-3">
+        <mat-label> Birth year </mat-label>
+        <input matInput name="birth_year" [(ngModel)]="char.birth_year" />
+      </mat-form-field>
 
-    <mat-form-field class="col-md-3">
-      <mat-label> Gender </mat-label>
-      <input matInput name="gender" [(ngModel)]="char.gender" />
-    </mat-form-field>
+      <mat-form-field class="col-md-3">
+        <mat-label> Gender </mat-label>
+        <input matInput name="gender" [(ngModel)]="char.gender" />
+      </mat-form-field>
 
-    <mat-form-field class="col-md-3">
-      <mat-label> Eye color </mat-label>
-      <input matInput name="eye_color" [(ngModel)]="char.eye_color" />
-    </mat-form-field>
+      <mat-form-field class="col-md-3">
+        <mat-label> Eye color </mat-label>
+        <input matInput name="eye_color" [(ngModel)]="char.eye_color" />
+      </mat-form-field>
 
-    <mat-list class="col-md-12" role="list" *ngIf="char.films">
-      <h3 mat-subheader>Films</h3>
-      <mat-list-item *ngFor="let film of char.films">
-        {{ film }}
-      </mat-list-item>
-    </mat-list>
+      <mat-list class="col-md-12" role="list" *ngIf="char.films">
+        <h6 style="color: indigo;">{{ char.name }} Films</h6>
+        <mat-list-item *ngFor="let film of char.films">
+          {{ film }}
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </div>
   </div>
 </div>
